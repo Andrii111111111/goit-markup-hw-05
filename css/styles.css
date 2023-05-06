@@ -10,6 +10,7 @@
     --cl-border: #E7E9FC;
     --bg-body: #FFFFFF;
     --padding-size: 120px;
+    --animation-speed: 250ms;
 }
 
 
@@ -91,7 +92,7 @@ body {
 
 .logo-text {
     color: #f4f4fd;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-text:hover,
@@ -113,7 +114,7 @@ body {
     font-family: "Raleway", sans-serif;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-up-cl {
@@ -128,7 +129,7 @@ body {
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.02em;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .activ-page::after {
@@ -154,7 +155,7 @@ body {
     line-height: 1.5;
     letter-spacing: 0.02em;
     padding: 24px 0;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts-link:hover,
@@ -230,7 +231,7 @@ body {
     width: 40px;
     background: var(--cl-button-txt);
     border-radius: 50%;
-    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-link:hover,
@@ -272,7 +273,7 @@ body {
     display: block;
     margin: 0 auto;
     border: none;
-    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:hover,
@@ -432,7 +433,7 @@ body {
     width: 40px;
     background: var(--cl-button-txt);
     border-radius: 50%;
-    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link:hover,
@@ -473,7 +474,7 @@ body {
     border: 1px solid #8E8F99;
     border-radius: 4px;
     color: #8E8F99;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-icon {
@@ -483,7 +484,7 @@ body {
 .customers-link:hover,
 .customers-link:focus {
     color: var(--active-link-color);
-    border-color: var(--active-link-color);
+    border-color: inherit;
 }
 
 
@@ -505,7 +506,7 @@ body {
     border-radius: 4px;
     min-height: 48px;
     padding: 12px 24px;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .production-btn:hover,
@@ -563,17 +564,24 @@ body {
 
 .production-links {
     display: block;
-    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
-.production-links:hover,
-.production-links:focus {
+.production-list-item:hover,
+.production-list-item:focus {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+
+}
+
+.production-list-item:hover .overlay,
+.production-list-item:focus .overlay {
+    transform: translateY(0);
 }
 
 /* overlay */
 .thumb-overlay {
     position: relative;
+    overflow: hidden;
 }
 
 .overlay {
@@ -588,9 +596,8 @@ body {
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 164px;
-
-
-
+    transform: translateY(100%);
+    transition: var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .overlay-text {
@@ -598,5 +605,52 @@ body {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #F4F4FD;
+}
 
+/* modal styles */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(46, 47, 66, 0.4);
+    transition: opacity 1000ms, visibility 1000ms;
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -100%);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 408px;
+    height: 584px;
+    background: #FCFCFC;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    transition: transform 1000ms;
+}
+
+.modal-cls-btn {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #E7E9FC;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    top: 24px;
+    left: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
