@@ -91,6 +91,7 @@ body {
 
 .logo-text {
     color: #f4f4fd;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-text:hover,
@@ -112,6 +113,7 @@ body {
     font-family: "Raleway", sans-serif;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-up-cl {
@@ -119,17 +121,31 @@ body {
 }
 
 .nav-link {
+    position: relative;
     color: var(--second-text-color);
     padding: 24px 0;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.activ-page::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    left: 0px;
+    bottom: -4px;
+    background: var(--active-link-color);
+    border-radius: 2px;
 }
 
 .nav-link:hover,
 .nav-link:focus {
-    color: #404bbf;
+
+    color: var(--active-link-color);
 }
 
 .contacts-link {
@@ -138,6 +154,7 @@ body {
     line-height: 1.5;
     letter-spacing: 0.02em;
     padding: 24px 0;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts-link:hover,
@@ -213,6 +230,7 @@ body {
     width: 40px;
     background: var(--cl-button-txt);
     border-radius: 50%;
+    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-link:hover,
@@ -253,7 +271,8 @@ body {
     font-family: "Roboto", sans-serif;
     display: block;
     margin: 0 auto;
-    border: none
+    border: none;
+    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:hover,
@@ -413,6 +432,7 @@ body {
     width: 40px;
     background: var(--cl-button-txt);
     border-radius: 50%;
+    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link:hover,
@@ -453,6 +473,7 @@ body {
     border: 1px solid #8E8F99;
     border-radius: 4px;
     color: #8E8F99;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-icon {
@@ -484,6 +505,7 @@ body {
     border-radius: 4px;
     min-height: 48px;
     padding: 12px 24px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .production-btn:hover,
@@ -541,9 +563,40 @@ body {
 
 .production-links {
     display: block;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .production-links:hover,
 .production-links:focus {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+/* overlay */
+.thumb-overlay {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--cl-button-txt);
+    mix-blend-mode: normal;
+    padding-top: 40px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 164px;
+
+
+
+}
+
+.overlay-text {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #F4F4FD;
+
 }
