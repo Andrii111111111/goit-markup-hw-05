@@ -510,7 +510,10 @@ body {
     border-radius: 4px;
     min-height: 48px;
     padding: 12px 24px;
-    transition: background-color var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .production-btn:hover,
@@ -568,7 +571,7 @@ body {
 
 .production-links {
     display: block;
-
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .production-list-item:hover,
@@ -577,10 +580,11 @@ body {
 
 }
 
-.production-list-item:hover .overlay,
-.production-list-item:focus .overlay {
+.production-links:hover .overlay,
+.production-links:focus .overlay {
     transform: translateY(0);
 }
+
 
 /* overlay */
 .thumb-overlay {
@@ -655,6 +659,7 @@ body {
     justify-content: center;
     padding: 0;
     cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
